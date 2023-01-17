@@ -8,7 +8,7 @@ pipeline {
             agent any
             steps{
                 //Changez avec votre lien github
-                git branch: 'main', url: 'git@github.com:123456789arij/projet_devops.git'
+                git branch: 'main', url: 'https://github.com/123456789arij/projet_devops.git'
             }
         }
         stage('Init'){
