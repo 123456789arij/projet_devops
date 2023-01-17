@@ -21,11 +21,7 @@ pipeline {
 
          stage('Build frontend') {
             agent any
-           /*  when {
-              //  changeset "**/ELearningManagement - fontend/**"
-                beforeAgent true
-            }
-*/
+
             steps {
                 dir('ELearningManagement - fontend'){
                     sh 'docker build -t arijabid/frontend:$BUILD_ID .'
