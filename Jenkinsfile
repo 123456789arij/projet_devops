@@ -23,10 +23,12 @@ pipeline {
             agent any
             steps {
                 dir('ELearningManagement - backend'){
+                    
+
                     sh 'docker build -t arijabid/backend:$BUILD_ID .'
                     sh 'docker push arijabid/backend:$BUILD_ID'
                     sh 'docker rmi arijabid/backend:$BUILD_ID'
-                    sh 'docker logout'
+                    
                 }
             }
         }
@@ -41,8 +43,14 @@ pipeline {
                     sh 'docker build -t arijabid/frontend:$BUILD_ID .'
                     sh 'docker push arijabid/frontend:$BUILD_ID'
                     sh 'docker rmi arijabid/frontend:$BUILD_ID'
-                    sh 'docker logout'
+               
                 }
+            }
+        }
+ stage('Cleanup'){
+            agent any
+            steps{
+                sh 'docker logout'
             }
         }
      
