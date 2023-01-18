@@ -19,6 +19,20 @@ pipeline {
         }
 
 
+   stage('Build backend') {
+            agent any
+            steps {
+                dir('ELearningManagement - backend'){
+                    sh 'docker build -t arijabid/backend:$BUILD_ID .'
+                    sh 'docker push arijabid/backend:$BUILD_ID'
+                    sh 'docker rmi arijabid/backend:$BUILD_ID'
+                    sh 'docker logout'
+                }
+            }
+        }
+
+
+
          stage('Build frontend') {
             agent any
 
@@ -31,17 +45,6 @@ pipeline {
                 }
             }
         }
-        stage('Build backend') {
-            agent any
-            steps {
-                dir('ELearningManagement - backend'){
-                    sh 'docker build -t arijabid/backend:$BUILD_ID .'
-                    sh 'docker push arijabid/backend:$BUILD_ID'
-                    sh 'docker rmi arijabid/backend:$BUILD_ID'
-                    sh 'docker logout'
-                }
-            }
-        }
-
+     
     }
 }
