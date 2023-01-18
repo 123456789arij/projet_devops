@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm install --save --legacy-peer-deps
 
-RUN npm run build --prod
+RUN ng  build --prod
 
 FROM nginx:alpine
 
